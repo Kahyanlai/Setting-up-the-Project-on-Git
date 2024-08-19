@@ -20,7 +20,7 @@ pipeline {
                         mail to: 'kahlok2003@gmail.com',
                         subject: "Test Stage Status: ${currentBuild.result}",
                         body: "The test stage has completed with status: ${currentBuild.result}. Logs are attached.",
-                        attachmentsPattern: 'test-stage-log.txt'
+                        attachLog: true
                     
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
                         mail to: 'kahlok2003@gmail.com',
                         subject: "Security Scan Stage Status: ${currentBuild.result}",
                         body: "The security scan stage has completed with status: ${currentBuild.result}. Logs are attached.",
-                        attachmentsPattern: 'security-scan-log.txt'
+                        attachLog: true
                     
                 }
             }
