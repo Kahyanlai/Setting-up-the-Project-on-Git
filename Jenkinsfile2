@@ -15,11 +15,12 @@ pipeline {
             }
             post {
                 always {
-                        subject: "Test Stage Status: ${currentBuild.result}",
-                        body: "The test stage has completed with status: ${currentBuild.result}. Logs are attached.",
-                        attachLog: true,
-                        mail to: 'kahlok2003@gmail.com'
-                    
+                    emailext(
+                to: 'kahlok2003@gmail.com',
+                subject: "Test Stage Status: ${currentBuild.result}",
+                body: "The test stage has completed with status: ${currentBuild.result}. Logs are attached.",
+                attachLog: true
+            )
                 }
             }
         }
@@ -31,19 +32,20 @@ pipeline {
         }
         
         stage('Security Scan') {
-            steps {
-                echo 'Performing security scan with OWASP ZAP'
-            }
-            post {
-                always {
-                        subject: "Security Scan Stage Status: ${currentBuild.result}",
-                        body: "The security scan stage has completed with status: ${currentBuild.result}. Logs are attached.",
-                        attachLog: true,
-                        mail to: 'kahlok2003@gmail.com'
-                    
-                }
-            }
+    steps {
+        echo 'Performing security scan with OWASP ZAP'
+    }
+    post {
+        always {
+            emailext(
+                to: 'kahlok2003@gmail.com',
+                subject: "Security Scan Stage Status: ${currentBuild.result}",
+                body: "The security scan stage has completed with status: ${currentBuild.result}. Logs are attached.",
+                attachLog: true
+            )
         }
+    }
+}
         
         stage('Deploy to Staging') {
             steps {
