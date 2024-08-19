@@ -17,7 +17,7 @@ pipeline {
                 always {
                     emailext to: 'kahlok2003@gmail.com',
                     subject: "Test Stage Status: ${currentBuild.result}",
-                    body: "The test stage has completed with status: ${currentBuild.result}",
+                    body: "The test stage has completed with status: ${currentBuild.result}"
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
                 always {
                     emailext to: 'kahlok2003@gmail.com',
                     subject: "Security Scan Stage Status: ${currentBuild.result}",
-                    body: "The security scan stage has completed with status: ${currentBuild.result}", 
+                    body: "The security scan stage has completed with status: ${currentBuild.result}"
                 }
             }
         }
